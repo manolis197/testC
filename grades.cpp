@@ -16,6 +16,7 @@ int main(void)
 	struct stud *s;
 	int i, j;
 	float max = 0;
+	FILE *fp, *fl;
 	
 	s = (struct stud*) malloc(pio * sizeof(stud));
 	
@@ -25,7 +26,7 @@ int main(void)
 		return 0;
 	}
 	
-	FILE *fp;
+	
 	fp = fopen("students.txt", "r");
 	
 	if (fp == NULL)
@@ -34,7 +35,7 @@ int main(void)
 		return 0;
 	}
 	
-	FILE *fl;
+	
 	fl = fopen("best.txt","w");
 	
 	if (fl == NULL)
