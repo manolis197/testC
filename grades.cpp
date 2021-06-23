@@ -25,13 +25,21 @@ int main(void)
 		return 0;
 	}
 	
-	
 	FILE *fp;
 	fp = fopen("students.txt", "r");
 	
 	if (fp == NULL)
 	{
-		printf("error\n");
+		printf("error in file 1\n");
+		return 0;
+	}
+	
+	FILE *fl;
+	fl = fopen("best.txt","w");
+	
+	if (fl == NULL)
+	{
+		printf("error in file 2");
 		return 0;
 	}
 	
@@ -49,26 +57,27 @@ int main(void)
 			{
 				max = s[i].summ; 
 			}
-		}
-		
-		printf("\ndest students\n");
-		
-		
-		for(j = 0 ; j < pio ; j++ )
-		{
-			fscanf(fp, "%s %f %f %f", s[j].name, &s[j].gradea, &s[j].gradeb, &s[j].gradec );
-			s[j].summ = (s[j].gradea + s[j].gradeb + s[j].gradec)/3;
-			
-			
-			if(max == s[j].summ)
-			{
-				printf("\n%s    %0.1f\n",s[j].name, s[j].summ );	
-			}
-		}				
+		}					
 	}
 	
+	printf("\nbest students\n");
+	
+
+	for(j = 0 ; j < pio ; j++ )
+	{	
+		if(max == s[j].summ)
+		{
+			printf("\n%s    %0.1f\n",s[j].name, s[j].summ );
+			fprintf(fl, "%s     %0.1f\n",s[j].name, s[j].summ );	
+		}
+	}
+
+
 	free(s);
 	fclose(fp);
+	fclose(fl);
+	
+	system("best.txt");
 	
 	return 0;
 }
