@@ -19,6 +19,13 @@ int main(void)
 	
 	s = (struct stud*) malloc(pio * sizeof(stud));
 	
+	if (s == NULL)
+	{
+		printf("error in array");
+		return 0;
+	}
+	
+	
 	FILE *fp;
 	fp = fopen("students.txt", "r");
 	
