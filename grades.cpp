@@ -63,6 +63,7 @@ int main(void)
 	
 	printf("\nbest students\n");
 	
+	fputs("            best students\n\n", fl);
 
 	for(j = 0 ; j < pio ; j++ )
 	{	
